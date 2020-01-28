@@ -1,0 +1,3 @@
+{
+  yabai = ./services/yabai.nix;
+}

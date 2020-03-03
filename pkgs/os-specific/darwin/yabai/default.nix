@@ -17,6 +17,7 @@ stdenv.mkDerivation rec {
     mkdir -p $out/share/man/man1
     cp doc/yabai.1 $out/share/man/man1/yabai.1
   '';
+
   buildInputs = [ Carbon Cocoa ScriptingBridge ];
 
   meta = with stdenv.lib; {

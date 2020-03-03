@@ -93,12 +93,15 @@ in
       ''
     );
 
-    launchd.user.agents.yabai-sa = {
-      command = "sudo ${pkgs.yabai}/bin/yabai --install-sa";
+    launchd.daemons.yabai-sa = {
+      script = ''
+        "${getOutput "out" cfg.package}/bin/yabai" --install-sa
+      '';
       serviceConfig.KeepAlive = false;
       serviceConfig.ProcessType = "Background";
       serviceConfig.RunAtLoad = true;
     };
+
     launchd.user.agents.yabai = {
       path = [ cfg.package config.environment.systemPath ];
       serviceConfig.ProgramArguments = [ "${getOutput "out" cfg.package}/bin/yabai" ]
